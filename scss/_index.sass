@@ -1,0 +1,123 @@
+p
+  font-family: 'Merriweather', serif
+  padding: 1px
+  font-weight: 500
+  font-size: 15px
+  font-size: 1rem
+  line-height: 1.8
+  color: var(--ColorLetras)
+  text-shadow: rgb(190, 189, 189) 0.5px 0.5px
+  font-size: 20px
+  text-indent: 4px
+
+.expand-btn
+  appearance: none
+
+@media only screen and (min-width: 320px) and (max-width: 768px)
+  .parrafoMain
+    max-height: calc(var(--max-line)* 1em * var(--line-height))
+    line-height: var(--line-height)
+    overflow: hidden
+    position: relative
+    transition: all .5s
+
+    &:has(+ .expand-btn:not(:checked))::before
+      content: ""
+      position: absolute
+      height: calc(2em * var(--line-height))
+      width: 100%
+      bottom: 0
+      pointer-events: none
+      transition: all .5s
+
+  .expand-btn
+    appearance: none
+    border: 1px solid black
+    width: 125px
+    padding: .5em
+    border-radius: .25em
+    cursor: pointer
+    margin-top: 1rem
+
+    &:hover
+      background-color: #CCC
+
+    &::before
+      content: "Continuar leyendo"
+
+    &:checked::before
+      content: "Contraer"
+
+  .parrafoMain:has(+ .expand-btn:checked)
+    max-height: none
+
+.main
+  display: flex
+  flex-direction: column
+  justify-content: center
+  background: var(--FondoParrClaro)
+  min-width: 320px
+  margin: 10px 15px 10px 15px
+  padding: 10px
+  float: left
+  box-sizing: border-box
+  border-radius: 25px
+  font-family: 'Ubuntu', Arial, Helvetica, sans-serif
+
+.banner
+  background-image: url(../img/fondos/logoHeader.png)
+  display: flex
+  flex-wrap: wrap
+  width: 98%
+  height: auto
+  margin: 15px 10px 10px 15px
+  justify-content: space-around
+  align-items: left
+  object-fit: contain
+  padding: 20px 20px 20px 20px
+
+figure
+  margin-bottom: 15px
+
+.banner figure
+  display: flex
+  position: relative
+  overflow: hidden
+  cursor: pointer
+  width: 180px
+  height: 180px
+  border-radius: 10px
+  box-shadow: 0px 15px 25px rgba(5, 5, 5, 5.5)
+
+  img
+    width: 100%
+    height: 100%
+    transition: all 500ms ease-out
+
+  .capa
+    position: absolute
+    top: 0
+    width: 100%
+    height: 100%
+    background: #2133438f
+    transition: all 500ms ease-out
+    opacity: 0
+    visibility: hidden
+    text-align: center
+
+  &:hover > .capa
+    opacity: 1
+    visibility: visible
+
+    .text
+      margin-top: 25px
+      margin-bottom: 15px
+
+  .capa .text
+    color: #b6c7d6
+    font-weight: 400
+    margin-bottom: 120px
+    transition: all 500ms ease-out
+    margin-top: 25px
+    padding: 2px
+    text-shadow: 1px 1px #213343
